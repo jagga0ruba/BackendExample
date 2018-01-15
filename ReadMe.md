@@ -2,15 +2,15 @@ By: João Fardilha
 Email: joao.d.fardilha@gmail.com
 Date 14/01/2018
 
-Backend Example
+#H1 Backend Example
 
-Requirements: 
+#H2 Requirements: 
     
     1. Mysql 5.7
     2. php 7.1+
     3. composer
 
-#Installation:
+#H2 Installation:
 
 1. Clone the contents of this repository to your server
 2. On the root of the project there is a file called DatabaseMigration.sql run it on your MySQL installation/workbench
@@ -24,7 +24,7 @@ Requirements:
 All the following functions should theoretically work if the parameters are passed as POST, but this was not tested.
 Therefore I will provide GET links for these functions.
 
-#Add New Customer
+#H2 Add New Customer
 
 ```
 http://localhost:8000/Customer/addNew/?FirstName=FIRSTNAME&amp;LastName=LASTNAME&EmailAddress=EMAILADDRESS&amp;Country=COUNTRY&amp;Gender=GENDER
@@ -54,7 +54,7 @@ A successfull call will return a json string in the following format:
 
  
 
-#Edit Customer
+#H2 Edit Customer
 
 ```
 http://localhost:8000/Customer/editUser/?IdCustomer=IDCUSTOMER&amp;FirstName=FIRSTNAME&amp;LastName=LASTNAME&amp;EmailAddress=EMAILADDRESS&amp;Gender=GENDER&amp;Country=COUNTRY
@@ -82,7 +82,7 @@ A successful call will return a json string in the following format:
 }
 ```
 
-#Deposit
+#H2 Deposit
 
 ```http://localhost:8000/Customer/deposit/?CustomerId=CUSTOMERID&amp;Amount=AMOUNT```
 
@@ -106,7 +106,7 @@ A successful call will return a json string in the following format:
 ```
 Warning: Total Balance includes both Regular Balance and Bonus Balance
 
-#Withdraw
+#H2 Withdraw
 
 ```http://localhost:8000/Customer/withdraw/?CustomerId=CUSTOMERID&Amount=AMMOUNT```
 
@@ -129,12 +129,12 @@ A successful call will return a json string in the following format:
 }
 ```
 
- #Report
+ #H2 Report
  
  ```http://localhost:8000/Report/```
  
  Caveats
- * Search Date Not implemented
+ * Search Date Not implemented yet, but the method exists now in the database
  
  Result
  
