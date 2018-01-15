@@ -134,7 +134,7 @@ A successful call will return a json string in the following format:
  ```http://localhost:8000/Report/```
  
  #### Caveats
- * Search Date Not implemented yet, but the method exists now in the database
+ * Search Date Not implemented yet, *the method exists now in the database and is called sp_GetTotalDepositAndWithdrawalsByGivenDate Implementation is a matter of adding the parameter to the controller and switching the method, but I am away from my computer and on my phone making these changes so I would prefer not to break it.*
  
  #### Result
  
@@ -164,3 +164,10 @@ A successful call will return a json string in the following format:
         ]
 }
 ```
+
+
+## Eventual TODO's:
+* Implementing Report by Date
+* Treat Errors from the Database and better describe them
+* Implementing unit tests
+* Perhaps Decoupling the account details from the Customer Model
