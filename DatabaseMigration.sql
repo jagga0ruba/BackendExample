@@ -188,6 +188,38 @@ BEGIN
 END//
 DELIMITER ;
 
+-- Dumping structure for procedure backendexampletest.sp_GetTotalDepositAndWithdrawalsByGivenDate
+DROP PROCEDURE IF EXISTS `sp_GetTotalDepositAndWithdrawalsByGivenDate`;
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_GetTotalDepositAndWithdrawalsByGivenDate`(
+	IN `p_GivenDate` VARCHAR(50)
+)
+BEGIN
+	IF( p_GivenDate='' )
+	THEN 
+		SELECT DATE_SUB( NOW() , INTERVAL 7 DAY ) INTO @GivenDate;
+	ELSE
+		SELECT p_GivenDate INTO @GivenDate;
+	END IF;
+
+	SELECT @GivenDate,t1.Country,t1.`No Of Costumers`,t1.`No Of Deposits`,t1.`Total Deposit Amount`,t2.`No Of Withdrawals`,t2.`Total Withdrawal Amount`
+	FROM (
+	SELECT customer.Country,COUNT( DISTINCT(customer.IdCustomer)) as 'No Of Costumers',COUNT( deposits.idAccount) as 'No Of Deposits', SUM( deposits.Value ) as 'Total Deposit Amount'
+	FROM customer
+	INNER JOIN account ON account.idCustomer=customer.IdCustomer
+	LEFT JOIN transactions as deposits ON deposits.`Type`='Deposit' AND account.idAccount=deposits.idAccount AND DATE( deposits.DateTimeAdded )>=@GivenDate
+	GROUP BY customer.Country
+	) as t1
+	RIGHT JOIN (
+	SELECT customer.Country,COUNT( withdrawals.idAccount) as 'No Of Withdrawals',SUM( withdrawals.Value ) * -1 as 'Total Withdrawal Amount'
+	FROM customer
+	INNER JOIN account ON account.idCustomer=customer.IdCustomer
+	LEFT JOIN transactions as withdrawals ON withdrawals.`Type`='Withdrawal' AND account.idAccount=withdrawals.idAccount AND DATE( withdrawals.DateTimeAdded )>@GivenDate
+	GROUP BY customer.Country
+	) as t2 ON t1.Country=t2.Country;	
+END//
+DELIMITER ;
+
 -- Dumping structure for procedure backendexampletest.sp_Withdraw
 DROP PROCEDURE IF EXISTS `sp_Withdraw`;
 DELIMITER //
