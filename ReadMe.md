@@ -10,7 +10,7 @@ Date 14/01/2018
     2. php 7.1+
     3. composer
 
-# Installation:
+## Installation:
 
 1. Clone the contents of this repository to your server
 2. On the root of the project there is a file called DatabaseMigration.sql run it on your MySQL installation/workbench
