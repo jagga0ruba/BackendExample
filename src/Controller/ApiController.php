@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 class ApiController
 {
@@ -19,12 +20,14 @@ class ApiController
      */
     public function index( )
     {
-        return new JsonResponse(
+       /* return new JsonResponse(
             [
                 "WelcomeMessage"=>"Welcome to the Customer API",
                 "Version" => "v1.0.0",
                 "Available Functions" => "none"
             ]
-        );
+        );*/
+
+       return new Response( phpinfo() );
     }
 }

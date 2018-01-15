@@ -1,0 +1,6 @@
+BackendExample:
+  host : localhost
+  database : backendexampletest
+  username : root
+  password : Test0008_
+  charset : utf8mb4
