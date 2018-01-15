@@ -20,14 +20,19 @@ class ApiController
      */
     public function index( )
     {
-       /* return new JsonResponse(
+       return new JsonResponse(
             [
                 "WelcomeMessage"=>"Welcome to the Customer API",
                 "Version" => "v1.0.0",
-                "Available Functions" => "none"
+                "Available Functions" =>
+                [
+                    "Customer/addNew"=>"Adds New Customer",
+                    "Customer/editUser"=>"Edits the Customer",
+                    "Customer/deposit"=>"Increases the account balance for a user",
+                    "Customer/withdraw"=>"Adds New Customer",
+                    "Report"=>"Adds New Customer",
+                ]
             ]
-        );*/
-
-       return new Response( phpinfo() );
+       );
     }
 }

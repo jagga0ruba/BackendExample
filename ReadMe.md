@@ -1,4 +1,25 @@
+By: João Fardilha
+Email: joao.d.fardilha@gmail.com
+Date 14/01/2018
 
+Backend Example
+
+Requirements: 
+    
+    1. Mysql 5.7
+    2. php 7.1+
+    3. composer
+
+#Installation:
+
+1. Clone the contents of this repository to your server
+2. On the root of the project there is a file called DatabaseMigration.sql run it on your MySQL installation/workbench
+    
+    a) On the config folder there is a database.yaml file that contains the config parameters for the connection to the database, configure them please.
+    
+3. on the root of the folder run composer install
+4. run `./bin/console server:run` or, if you are on Windows `php bin/console server:run`
+5. navigate to localhost:8000 you should see a welcoming message.
 
 All the following functions should theoretically work if the parameters are passed as POST, but this was not tested.
 Therefore I will provide GET links for these functions.
